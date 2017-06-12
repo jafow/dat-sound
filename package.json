@@ -1,0 +1,16 @@
+{
+  "name": "dat-sound",
+  "version": "0.0.1",
+  "description": "share and sync music using Dat",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/test.js | tap-spec"
+  },
+  "keywords": [
+    "dat",
+    "music",
+    "p2p"
+  ],
+  "author": "Jared Fowler <jared.a.fowler@gmail.com> (@jafow)",
+  "license": "MIT"
+}

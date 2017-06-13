@@ -12,5 +12,8 @@
     "p2p"
   ],
   "author": "Jared Fowler <jared.a.fowler@gmail.com> (@jafow)",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^14.4.0"
+  }
 }

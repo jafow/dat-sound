@@ -7,8 +7,8 @@ const reader = new FileReader()
 var arch
 
 reader.addEventListener('loadend', (blob) => {
-  // arch.writeFile('~/Dat-Sounds/p2p-mix.mp3', blob, {encoding: 'binary'})
-  console.log('written');
+  arch.writeFile('p2p-mix.mp3', reader.result, {encoding: 'binary'})
+  console.log('after reading ', reader.result.toString())
 })
 
 addSong.addEventListener('click', (e) => {
@@ -16,10 +16,11 @@ addSong.addEventListener('click', (e) => {
     title: 'p2p-mix',
     description: 'nice sounds'
   })
-  console.log('p2ppp')
+
+  console.log('create Dat')
 })
 
-function handleFile(obj) {
-
+function handleFile(files) {
+  reader.readAsArrayBuffer(files[0])
 }
 

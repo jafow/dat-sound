@@ -13,7 +13,7 @@
             <ul>
                <li><input type="text" name="Title" id="sound-title" placeholder="Title of your sound" value="" /></li>
                <li><input type="text" name="Tag" id="tag" value="" placeholder="Tags eg 'Oldies, Disco, Bebop'" /></li>
-               <li><input type="file" name="Audio File" id="song-file" /> Choose an audio file</li>
+               <li><input type="file" name="Audio File" id="song-file" onchange="handleFile(this.files)" /> Choose an audio file</li>
             </ul>
             <div class="btn-container">
                 <button id="add-sound" type="submit">+</button>

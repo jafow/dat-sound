@@ -1,0 +1,30 @@
+@import './normalize.css'
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  padding: 5px;
+}
+
+body {
+  font-size:16px;
+  margin:auto;
+  max-width: 550px;
+  font-family:Ubuntu Mono,'Helvetica Neue',sans-serif;
+  color: #111;
+  margin-bottom: 100px;
+  line-height: 1.4;
+}
+
+body a {
+  color: #0b51de;
+}
+input[type=text] {
+  width: 220px;
+  height: 24px;
+}
+li {
+  list-style: none;
+}

@@ -1,16 +1,12 @@
-@import './normalize.css'
-
-* {
-  box-sizing: border-box;
-}
+@import './normalize.css';
 
 html {
   padding: 5px;
 }
 
 body {
-  font-size:16px;
-  margin:auto;
+  font-size:18px;
+  margin:0 auto;
   max-width: 550px;
   font-family:Ubuntu Mono,'Helvetica Neue',sans-serif;
   color: #111;
@@ -21,10 +17,16 @@ body {
 body a {
   color: #0b51de;
 }
+
 input[type=text] {
   width: 220px;
   height: 24px;
 }
+
 li {
   list-style: none;
+}
+
+button {
+  float: right;
 }

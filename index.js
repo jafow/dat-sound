@@ -5,12 +5,8 @@ const songTag = document.getElementById('song-tag')
 const songFile = document.getElementById('song-file')
 const reader = new FileReader()
 
-var arch = DatArchive.create({
-  title: 'p2p-mix',
-  description: 'nice sounds'
-})
 
-reader.addEventListener('loadend', writeFileBlobXXX)
+reader.addEventListener('loadend', setupDat)
 
 // addSong.addEventListener('click', setupDat)
 
@@ -21,16 +17,16 @@ async function setupDat(blob) {
     description: 'nice sounds'
   })
 
-  await arch.writeFile('p2p-mix.mp3', reader.result, {encoding: 'binary'})
-  console.log('after reading ', reader.result.toString())
+  await arch.writeFile('/test-blob.txt', new ArrayBuffer(16))
+  await arch.commit()
 }
 
 async function writeFileBlobXXX (blob) {
-  await arch.writeFile('p2p-mix.mp3', reader.result, {encoding: 'binary'})
+  // await arch.writeFile('p2p-mix.mp3', reader.result, {encoding: 'binary'})
   console.log('after reading ', reader.result.toString())
 }
 
-function handleFile(files) {
+async function handleFile(files) {
   reader.readAsArrayBuffer(files[0])
 }
 

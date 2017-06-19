@@ -8,17 +8,19 @@
     </head>
     <body>
         <h1>Dat Sound</h1>
-        <div id="save">
-            <p>Add a sound</p>
-            <ul>
-               <li><input type="text" name="Title" id="sound-title" placeholder="Title of your sound" value="" /></li>
-               <li><input type="text" name="Tag" id="tag" value="" placeholder="Tags eg 'Oldies, Disco, Bebop'" /></li>
-               <li><input type="file" name="Audio File" id="song-file" onchange="handleFile(this.files)" /> Choose an audio file</li>
-            </ul>
-            <div class="btn-container">
-                <button id="add-sound" type="submit">+</button>
+        <main role="main">
+            <div id="save">
+                <p>Add a sound</p>
+                <ul>
+                    <li><input type="text" name="Title" id="sound-title" placeholder="Title of your sound" value="" /></li>
+                    <li><input type="text" name="Tag" id="sound-tag" value="" placeholder="Tags eg 'Oldies, Disco, Bebop'" /></li>
+                    <li><input type="file" name="Audio File" id="sound-file" onchange="handleFile(this.files)" /> Choose an audio file</li>
+                </ul>
+                <div class="btn-container">
+                    <button id="add-sound" type="submit">+</button>
+                </div>
             </div>
-        </div>
+        </main>
         <script src="./index.js" type="text/javascript" charset="utf-8"></script>
     </body>
 </html>

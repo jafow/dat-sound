@@ -1,15 +1,14 @@
-
-const addSound = document.getElementById('add-sound')
+/* global DatArchive, FileReader */
 const soundTitle = document.getElementById('sound-title')
 const soundTag = document.getElementById('sound-tag')
-const soundFile = document.getElementById('sound-file')
 const reader = new FileReader()
+const yo = require('yo-yo')
 var arch
 
 reader.addEventListener('loadend', setupDat)
 // document.addEventListener('DOMContentLoaded', makePlaylist)
 
-async function setupDat(blob) {
+async function setupDat (blob) {
   arch = await DatArchive.create({
     title: soundTitle.value || 'my dat sound',
     description: soundTag.value || 'my nice dat sounds'
@@ -20,11 +19,7 @@ async function setupDat(blob) {
   makePlaylist(arch)
 }
 
-async function writeFileBlobXXX (blob) {
-  console.log('after reading ', reader.result.toString())
-}
-
-async function handleFile(fileList) {
+async function handleFile (fileList) {
   reader.readAsArrayBuffer(fileList[0])
 }
 
@@ -34,5 +29,5 @@ async function makePlaylist (archive) {
   for (let a of audioFiles) {
     document.createElement('li')
   }
-  return;
+  return
 }

@@ -4,7 +4,9 @@
   "description": "share and sync music using Dat",
   "main": "index.js",
   "scripts": {
-    "test": "node test/test.js | tap-spec"
+    "test": "node test/test.js | tap-spec",
+    "build": "./node_modules/browserify/bin/cmd.js index.js -o dist/bundle.js",
+    "lint": "node ./node_modules/standard/bin/cmd.js index.js"
   },
   "keywords": [
     "dat",
@@ -18,6 +20,10 @@
     "eslint": "^4.0.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint-plugin-standard": "^3.0.1",
+    "standard": "^10.0.2"
+  },
+  "dependencies": {
+    "yo-yo": "^1.4.1"
   }
 }

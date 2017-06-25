@@ -54,9 +54,18 @@ li {
   margin: 32px 15px 0 0;
   padding: 8px 11px;
 }
+.add-song__file-picker:hover {
+  background: #fff;
+}
+.add-song__file-picker:hover a {
+  color: darkblue;
+}
 .add-song__file-picker-label {
-  color: #fff;
   font-weight: 600;
+}
+.add-song__file-picker-label a {
+  text-decoration: none;
+  color:#fff;
 }
 input[type="file"] {
   display: none;

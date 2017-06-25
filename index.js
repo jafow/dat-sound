@@ -1,19 +1,20 @@
 /* global DatArchive, FileReader */
+const yo = require('yo-yo')
+const uploadElement = require('upload-element')
 const soundTitle = document.getElementById('sound-title')
 const soundTag = document.getElementById('sound-tag')
 const addSoud = document.getElementById('add-sound')
 const reader = new FileReader()
 const filePicker = document.getElementById('file-picker')
 const pickerTag = document.getElementById('file-picker-tag')
-const yo = require('yo-yo')
 var arch
 
 reader.addEventListener('loadend', setupDat)
-// document.addEventListener('DOMContentLoaded', makePlaylist)
 addSoud.addEventListener('click', makePlaylist)
 pickerTag.addEventListener('click', clickFilePicker, false)
 
-async function setupDat (blob) {
+async function setupDat (err, blob) {
+  if (err) throw err
   arch = await DatArchive.create({
     title: soundTitle.value || 'my dat sound',
     description: soundTag.value || 'my nice dat sounds'
@@ -42,9 +43,6 @@ async function makePlaylist () {
   return playlist.appendChild(list(audioFiles))
 }
 
-function addSoudHandler (e) {
-
-}
 function list (fileNames) {
   return yo`
       <div>

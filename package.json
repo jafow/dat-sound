@@ -24,6 +24,7 @@
     "standard": "^10.0.2"
   },
   "dependencies": {
+    "upload-element": "^1.0.1",
     "yo-yo": "^1.4.1"
   }
 }

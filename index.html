@@ -4,27 +4,37 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
         <title>dat sound</title>
+        <link rel="stylesheet" href="styles/normalize.css" />
         <link rel="stylesheet" href="styles/index.css" />
     </head>
     <body>
         <h1>Dat Sound</h1>
         <main role="main">
-            <div id="save">
-                <p>Add a sound</p>
+            <div class="add-song">
+                <h3>Add a Sound</h3>
                 <ul>
-                    <li><input type="text" name="Title" id="sound-title" placeholder="Title of your sound" value="" /></li>
-                    <li><input type="text" name="Tag" id="sound-tag" value="" placeholder="Tags eg 'Oldies, Disco, Bebop'" /></li>
-                    <li><input type="file" name="Audio File" id="sound-file" onchange="handleFile(this.files)" /> Choose an audio file</li>
+                    <li class="add-song__input-item">
+                        <input type="text" name="Title" id="sound-title" placeholder="Title of the sound" value="" />
+                    </li>
+                    <li class="add-song__input-item">
+                        <input type="text" name="Tag" id="sound-tag" value="" placeholder="Description of the sound" />
+                    </li>
                 </ul>
-                <div class="btn-container">
-                    <button id="add-sound" type="submit">+</button>
+                <div class="add-song__file-picker">
+                    <label for="file-picker" class="add-song__file-picker-label">
+                        Choose an audio file
+                        <input type="file" accept="audio/*" name="Audio File" id="file-picker" onchange="handleFile(this.files)" />
+                    </label>
                 </div>
             </div>
+            <div class="add-song__btn-container">
+                <button class="add-song__btn" id="add-sound" type="submit">+</button>
+            </div>
         </main>
-        <section id="playlist">
-        </section>
         <section class="audio-player">
             <audio controls="controls" class="audio-player-ctrl" id="player"></audio>
+        </section>
+        <section id="playlist">
         </section>
         <script src="dist/bundle.js" type="text/javascript" charset="utf-8"></script>
     </body>

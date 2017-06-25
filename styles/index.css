@@ -6,7 +6,7 @@ html {
 
 body {
   font-size:18px;
-  margin:0 auto;
+  margin: auto;
   max-width: 550px;
   font-family:Ubuntu Mono,'Helvetica Neue',sans-serif;
   color: #111;
@@ -18,15 +18,46 @@ body a {
   color: #0b51de;
 }
 
-input[type=text] {
-  width: 220px;
+.add-song__input-item input[type=text] {
+  width: 320px;
   height: 24px;
+  line-height: 26px;
 }
 
 li {
   list-style: none;
 }
 
-button {
+.add-song {
+  background: lightgray;
+  height: 240px;
+  padding: 5px;
+}
+.add-song__input-item {
+  margin: 6px auto;
+}
+.add-song__btn-container {
+  padding: 20px auto;
+  position: relative;
+  height: 50px;
+}
+.add-song__btn {
   float: right;
+}
+.add-song__file-picker {
+  display: inline-block;
+  float: right;
+  background: dodgerblue;
+  border: 1px solid white;
+  border-radius: 10px;
+  font-size: 22px;
+  margin: 32px 15px 0 0;
+  padding: 8px 11px;
+}
+.add-song__file-picker-label {
+  color: #fff;
+  font-weight: 600;
+}
+input[type="file"] {
+  display: none;
 }

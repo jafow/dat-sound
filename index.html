@@ -8,6 +8,9 @@
         <link rel="stylesheet" href="styles/index.css" />
     </head>
     <body>
+        <header>
+            The header goes here
+        </header>
         <h1>Dat Sound</h1>
         <main role="main">
             <div class="add-song">
@@ -20,21 +23,24 @@
                         <input type="text" name="Tag" id="sound-tag" value="" placeholder="Description of the sound" />
                     </li>
                 </ul>
-                <div class="add-song__file-picker">
+                <div class="add-song__file-picker" id="file-picker-tag">
                     <label for="file-picker" class="add-song__file-picker-label">
-                        <a href="#" id="file-picker-tag">Choose an audio file</a>
-                        <input type="file" accepts="audio/*" id="file-picker" onchange="handleFiles(this.files)" />
+                        Choose an audio file
+                        <input type="file" accepts="audio/*" id="file-picker" />
                     </label>
                 </div>
             </div>
             <div class="add-song__btn-container">
-                <button class="add-song__btn" id="add-sound" type="submit">+</button>
+                <button class="add-song__btn" id="create-dat" type="submit">+</button>
             </div>
         </main>
         <section class="audio-player">
             <audio controls="controls" class="audio-player-ctrl" id="player"></audio>
         </section>
-        <section id="playlist">
+        <section class="playlist">
+            <h3>List of Audio Files</h3>
+            <div id="playlist">
+            </div>
         </section>
         <script src="dist/bundle.js" type="text/javascript" charset="utf-8"></script>
     </body>

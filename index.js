@@ -1,52 +1,53 @@
-/* global DatArchive, FileReader */
+/* global DatArchive */
 const yo = require('yo-yo')
 const uploadElement = require('upload-element')
 const soundTitle = document.getElementById('sound-title')
 const soundTag = document.getElementById('sound-tag')
-const addSoud = document.getElementById('add-sound')
-const reader = new FileReader()
+const createDat = document.getElementById('create-dat')
 const filePicker = document.getElementById('file-picker')
 const pickerTag = document.getElementById('file-picker-tag')
 var arch
 
-reader.addEventListener('loadend', setupDat)
-addSoud.addEventListener('click', makePlaylist)
-pickerTag.addEventListener('click', clickFilePicker, false)
+createDat.addEventListener('click', setupDat)
+filePicker.addEventListener('click', clickFilePicker, false)
 
-async function setupDat (err, blob) {
-  if (err) throw err
+async function setupDat () {
   arch = await DatArchive.create({
-    title: soundTitle.value || 'my dat sound',
-    description: soundTag.value || 'my nice dat sounds'
+    title: '',
+    description: ''
   })
+}
 
-  await arch.writeFile(soundTitle.value, reader.result)
+async function addAudioFileToDat (err, file) {
+  if (err) throw new Error(err)
+  var fileName = cleanFileName(file[0].file.name)
+  var buf = file[0].target.result
+
+  await arch.writeFile(fileName, buf)
   arch.commit()
   makePlaylist(arch)
 }
 
 function clickFilePicker (e) {
   if (filePicker !== null) {
-    filePicker.click()
+    uploadElement(filePicker, addAudioFileToDat)
   }
-  e.preventDefault()
 }
 
-function handleFiles (fileList) {
-  reader.readAsArrayBuffer(fileList[0])
+function cleanFileName (name) {
+  // sanitize the file name according to
+  // beaker web api
+  return 'test' + String(Date.now())
 }
 
 async function makePlaylist () {
   var audioFiles = await arch.readdir('/')
-  // var audioFiles = await archive.readdir('/')
   var playlist = document.getElementById('playlist')
   return playlist.appendChild(list(audioFiles))
 }
 
 function list (fileNames) {
   return yo`
-      <div>
-        <h3>List of Audio Files</h3>
           <ul>
             ${fileNames.map((file) => yo`<li class="playlist_files">${file}</li>`)}
           </ul>

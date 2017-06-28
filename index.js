@@ -9,7 +9,7 @@ const pickerTag = document.getElementById('file-picker-tag')
 var arch
 
 createDat.addEventListener('click', setupDat)
-filePicker.addEventListener('click', clickFilePicker, false)
+pickerTag.addEventListener('click', clickFilePicker)
 
 async function setupDat () {
   arch = await DatArchive.create({
@@ -29,7 +29,8 @@ async function addAudioFileToDat (err, file) {
 }
 
 function clickFilePicker (e) {
-  if (filePicker !== null) {
+  if (e.target === filePicker) {
+    e.stopPropagation()
     uploadElement(filePicker, addAudioFileToDat)
   }
 }
@@ -40,17 +41,18 @@ function cleanFileName (name) {
   return 'test' + String(Date.now())
 }
 
-async function makePlaylist () {
-  var audioFiles = await arch.readdir('/')
+async function makePlaylist (archive) {
+  var audioFiles = await archive.readdir('/')
   var playlist = document.getElementById('playlist')
-  return playlist.appendChild(list(audioFiles))
+  playlist.appendChild(list(audioFiles))
 }
 
 function list (fileNames) {
   return yo`
+        <div>
           <ul>
-            ${fileNames.map((file) => yo`<li class="playlist_files">${file}</li>`)}
+            ${fileNames.map((file) => yo`<li class="playlist_files"><div>${file}</div></li>`)}
           </ul>
-      </div>
-    `
+        </div>
+      `
 }

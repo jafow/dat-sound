@@ -38,13 +38,23 @@ function clickFilePicker (e) {
 function cleanFileName (name) {
   // sanitize the file name according to
   // beaker web api
+  console.log('name: ', name);
   return 'test' + String(Date.now())
 }
 
 async function makePlaylist (archive) {
   var audioFiles = await archive.readdir('/')
-  var playlist = document.getElementById('playlist')
-  playlist.appendChild(list(audioFiles))
+  console.log('updateing these audio files', audioFiles);
+  yo.update(playlistSection, list(audioFiles)) // appendChild(list(audioFiles))
+}
+
+async function popuplatePlaylist () {
+  if (typeof arch !== 'undefined') {
+    var audioFiles = await arch.readdir('/')
+    yo.update(playlistSection, list(audioFiles))
+  } else {
+    playlistSection.appendChild(playlist)
+  }
 }
 
 function list (fileNames) {

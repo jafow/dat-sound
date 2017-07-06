@@ -26,7 +26,7 @@ async function addAudioFileToDat (err, file) {
   debugger;
   await arch.writeFile(fileName, buf)
   arch.commit()
-  makePlaylist(arch)
+  makePlaylist()
 }
 
 async function clickFilePicker (e) {
@@ -42,8 +42,8 @@ function cleanFileName (name) {
   return 'test' + String(Date.now())
 }
 
-async function makePlaylist (archive) {
-  var audioFiles = await archive.readdir('/')
+async function makePlaylist () {
+  var audioFiles = await arch.readdir('/')
   console.log('updateing these audio files', audioFiles);
   yo.update(playlistSection, list(audioFiles)) // appendChild(list(audioFiles))
 }

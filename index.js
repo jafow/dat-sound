@@ -23,7 +23,6 @@ async function addAudioFileToDat (err, file) {
   if (err) throw new Error(err)
   var fileName = cleanFileName(file[0].file.name)
   var buf = file[0].target.result
-  debugger;
   await arch.writeFile(fileName, buf)
   arch.commit()
   makePlaylist()
@@ -37,9 +36,8 @@ async function clickFilePicker (e) {
 }
 
 function cleanFileName (name) {
-  // sanitize the file name according to
-  // beaker web api
-  return 'test' + String(Date.now())
+  var nonsafeChars = /[& +$,:;.=?@"#{}|^~[`%!'<>\]./*]/
+  return name.trim().replace(nonsafeChars, '-')
 }
 
 async function makePlaylist () {
